@@ -7,7 +7,6 @@ import math
 from typing import List
 
 
-
 def index_range(page: int, page_size: int) -> tuple:
     """
     Return a tuple of size two containing
@@ -21,6 +20,7 @@ def index_range(page: int, page_size: int) -> tuple:
     start_idx = (page - 1) * page_size
     end_idx = page * page_size
     return (start_idx, end_idx)
+
 
 class Server:
     """Server class to paginate a database of popular baby names.
@@ -51,4 +51,3 @@ class Server:
         dataset = self.dataset()
         start_idx, end_idx = index_range(page, page_size)
         return dataset[start_idx:end_idx]
-
