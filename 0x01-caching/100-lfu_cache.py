@@ -27,9 +27,13 @@ class LFUCache(BaseCaching):
 
         # Check if cache is full
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-            lfu_keys = [key for key, freq in self.frequency.items() if freq == min(self.frequency.values())]
+            lfu_keys = [
+                    key for key,
+                    freq in self.frequency.items() if freq == min(self.frequency.values())
+                    ]
 
-            # If multiple items have the same least frequency, use access order for tie-breaking
+            # If multiple items have the same least frequency,
+            # use access order for tie-breaking
             if len(lfu_keys) > 1:
                 lru_key = self.access_order.pop(0)
                 if lru_key in lfu_keys:
@@ -57,4 +61,3 @@ class LFUCache(BaseCaching):
         self.access_order.append(key)
 
         return self.cache_data[key]
-
