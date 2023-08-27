@@ -12,7 +12,9 @@ class LIFOCache(BaseCaching):
         self.order = []
 
     def put(self, key, item):
-        """Assigns the item value to the dictionary self.cache_data for the key key"""
+        """
+        Assigns the item value to the dictionary
+        self.cache_data for the key key"""
         if key is None or item is None:
             return
 
