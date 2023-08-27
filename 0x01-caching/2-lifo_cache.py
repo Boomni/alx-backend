@@ -12,20 +12,18 @@ class LIFOCache(BaseCaching):
         self.order = []
 
     def put(self, key, item):
-        """
-        Assigns to the dictionary self.cache_data
-        the item value for the key key
-        """
+        """Assigns the item value to the dictionary self.cache_data for the key key"""
         if key is None or item is None:
             return
 
         # Check if cache is full
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-            # Get the last (newest) key in the cache
-            newest_key = self.order.pop()
-            del self.cache_data[newest_key]
-            print(f"DISCARD: {newest_key}\n")
+            # Get the key to be removed (latest)
+            latest_key = self.order.pop()
+            del self.cache_data[latest_key]
+            print(f"DISCARD: {latest_key}")
 
+        # Add the new item and update insertion order
         self.cache_data[key] = item
         self.order.append(key)
 
