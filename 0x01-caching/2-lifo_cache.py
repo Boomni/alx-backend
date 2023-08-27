@@ -9,6 +9,7 @@ class LIFOCache(BaseCaching):
     def __init__(self):
         """Initialize"""
         super().__init__()
+        self.order = []
 
     def put(self, key, item):
         """
@@ -21,11 +22,12 @@ class LIFOCache(BaseCaching):
         # Check if cache is full
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
             # Get the last (newest) key in the cache
-            newest_key = self.cache_data[:-1]
-            print(f"DISCARD: {newest_key}\n")
+            newest_key = self.order.pop()
             del self.cache_data[newest_key]
+            print(f"DISCARD: {newest_key}\n")
 
         self.cache_data[key] = item
+        self.order.append(key)
 
     def get(self, key):
         """Retrieves the item value by key"""
