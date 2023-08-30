@@ -26,7 +26,6 @@ def get_locale():
     locale = request.args.get('locale')
     if locale in app.config['LANGUAGES']:
         return locale
-    #return request.accept_languages.best_match(app.config['LANGUAGES'])
 
     # 2. Locale from user settings
     if g.user and g.user.get('locale') in app.config['LANGUAGES']:
@@ -41,6 +40,7 @@ def get_locale():
 
     # 4. Default locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
+
 
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
