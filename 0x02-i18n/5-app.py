@@ -7,6 +7,7 @@ from flask_babel import Babel
 app = Flask(__name__)
 app.secret_key = '32b3giuej as57r6t'
 
+
 class Config():
     """Class to configure available languages in our app"""
     LANGUAGES = ["en", "fr"]
