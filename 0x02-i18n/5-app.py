@@ -38,7 +38,7 @@ users = {
 
 
 def get_user():
-    """"""
+    """Gets the user parameter passed through the url"""
     login_as = request.args.get('login_as')
     if login_as:
         return users.get(int(login_as))
@@ -47,6 +47,7 @@ def get_user():
 
 @app.before_request
 def before_request():
+    """Gets the global user, works like flask session"""
     g.user = get_user()
 
 
