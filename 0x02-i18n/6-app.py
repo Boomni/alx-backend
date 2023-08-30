@@ -40,7 +40,7 @@ def get_locale():
             return header_locale
 
     # 4. Default locale
-    return app.config['BABEL_DEFAULT_LOCALE']
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
@@ -67,7 +67,7 @@ def before_request():
 @app.route('/')
 def index():
     """Renders a simple webpage"""
-    return render_template('5-index.html')
+    return render_template('6-index.html')
 
 
 if __name__ == "__main__":
