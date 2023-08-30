@@ -9,9 +9,9 @@ app = Flask(__name__)
 
 class Config():
     """Class to configure available languages in our app"""
-    LANGUAGES = ["en", "fr"]
-    BABEL_DEFAULT_LOCALE = 'en'
-    BABEL_DEFAULT_TIMEZONE = 'UTC'
+    LANGUAGES : list = ["en", "fr"]
+    BABEL_DEFAULT_LOCALE : str = 'en'
+    BABEL_DEFAULT_TIMEZONE : str = 'UTC'
 
 
 app.config.from_object(Config)
@@ -26,7 +26,7 @@ def index() -> str:
 
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     """Get locale from request"""
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
