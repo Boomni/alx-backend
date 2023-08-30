@@ -3,6 +3,7 @@
 import pytz
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
+import datetime
 
 app = Flask(__name__)
 
@@ -68,7 +69,10 @@ def before_request():
 @app.route('/')
 def index():
     """Renders a simple webpage"""
-    return render_template('7-index.html')
+    user_timezone = pytz.timezone(get_timezone())
+    current_time = datetime.datetime.now(
+            user_timezone).strftime("%b %d, %Y, %I:%M:%S %p")
+    return render_template('8-index.html', current_time=current_time)
 
 
 @babel.timezoneselector
