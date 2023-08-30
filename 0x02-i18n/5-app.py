@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 """Simple flask app to practice i18n"""
 from flask import Flask, render_template, request, g
-import gettext
 from flask_babel import Babel
 
 app = Flask(__name__)
-app.secret_key = '32b3giuej as57r6t'
 
 
 class Config():
