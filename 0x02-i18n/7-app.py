@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Simple flask app to practice i18n"""
 from flask import Flask, render_template, request
-from flask_babel import Babel, _
+from flask_babel import Babel
 
 
 app = Flask(__name__)
@@ -20,15 +20,9 @@ babel = Babel(app)
 
 
 @app.route('/')
-def index():
+def index() -> str:
     """Renders a simple webpage"""
-    home_title: str = _('Welcome to Holberton')
-    home_header: str = _('Hello world!')
-    return render_template(
-            "3-index.html",
-            home_title=home_title,
-            home_header=home_header
-            )
+    return render_template("3-index.html")
 
 
 @babel.localeselector
